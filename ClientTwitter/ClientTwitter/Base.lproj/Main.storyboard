@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HKu-6e-H5W">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,19 +13,19 @@
         <scene sceneID="tYw-wI-azz">
             <objects>
                 <tableViewController id="HKu-6e-H5W" customClass="TweetsTableViewController" customModule="ClientTwitter" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VwH-Bs-mgD">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VwH-Bs-mgD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="300" id="I5p-wI-2bV" customClass="TweetTableViewCell" customModule="ClientTwitter" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="300" id="I5p-wI-2bV" customClass="TweetTableViewCell" customModule="ClientTwitter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I5p-wI-2bV" id="kuL-b0-ehv">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Sy-Ii-FID">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Sy-Ii-FID">
                                             <rect key="frame" x="8" y="8" width="48" height="48"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="48" id="4OM-CY-9hb"/>
@@ -71,7 +71,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="24O-mV-o3p">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="marvel" translatesAutoresizingMaskIntoConstraints="NO" id="24O-mV-o3p">
                                                     <rect key="frame" x="0.0" y="57" width="303" height="170"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="24O-mV-o3p" secondAttribute="height" multiplier="303:170" id="eyj-hV-kAP"/>
@@ -91,6 +91,7 @@
                                 <connections>
                                     <outlet property="avatarImageView" destination="5Sy-Ii-FID" id="Hjw-h4-KFd"/>
                                     <outlet property="contentTextLabel" destination="YCe-V8-zYz" id="uYf-RF-cwx"/>
+                                    <outlet property="dataLabel" destination="CeR-h9-32U" id="y6o-HY-1kX"/>
                                     <outlet property="fullNameLabel" destination="yox-uZ-buY" id="KaE-cw-YcZ"/>
                                     <outlet property="referenceCreated" destination="DCB-o4-5wf" id="tsN-EV-ERr"/>
                                     <outlet property="tweetImageView" destination="24O-mV-o3p" id="CDG-BQ-qa4"/>
@@ -109,4 +110,7 @@
             <point key="canvasLocation" x="1189.5999999999999" y="-806.44677661169419"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="marvel" width="400" height="600"/>
+    </resources>
 </document>
