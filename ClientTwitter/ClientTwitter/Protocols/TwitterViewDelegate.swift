@@ -8,8 +8,7 @@
 
 import Foundation
 import UIKit
-protocol TwitterDelegate: NSObjectProtocol {
+protocol TwitterViewDelegate: NSObjectProtocol {
     func displayTweets(tweets: [Tweet])
-//    func displayImage(image: UIImage)
     func displayError(error: NSError)
 }

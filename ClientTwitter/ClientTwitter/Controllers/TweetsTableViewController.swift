@@ -8,9 +8,9 @@
 
 import UIKit
 
-class TweetsTableViewController: UITableViewController, TwitterDelegate {
+class TweetsTableViewController: UITableViewController, TwitterViewDelegate {
     
-    private var tweetPresenter: TweetPresenter?
+    private var apiTwitterService: APITwitterService?
     private var  token: String?
     private var  tweets: [Tweet] = []
     
@@ -19,9 +19,9 @@ class TweetsTableViewController: UITableViewController, TwitterDelegate {
         
         tableView.estimatedRowHeight = 300
         tableView.rowHeight = 300 //UITableView.automaticDimension
-        tweetPresenter = TweetPresenter(self)
-
-        tweetPresenter?.requestToken()
+        apiTwitterService = APITwitterService(self)
+        
+        apiTwitterService?.getToken()
     }
     
     func displayTweets(tweets: [Tweet]) {
@@ -46,13 +46,11 @@ class TweetsTableViewController: UITableViewController, TwitterDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetTableViewCell
+        let urlProfileImage = tweets[indexPath.row].profileImageUrl
         cell.fullNameLabel.text = tweets[indexPath.row].name
         cell.dataLabel.text = tweets[indexPath.row].date
         cell.contentTextLabel.text = tweets[indexPath.row].text
+        cell.avatarImageView.downloaded(from: urlProfileImage!)
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tweetPresenter?.downloadJSON(content: "ios")
     }
 }

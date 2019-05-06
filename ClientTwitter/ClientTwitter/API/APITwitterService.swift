@@ -1,29 +1,23 @@
 //
-//  TweetPresenter.swift
+//  APITwitterService.swift
 //  ClientTwitter
 //
-//  Created by mac on 5/3/19.
+//  Created by mac on 5/6/19.
 //  Copyright © 2019 mac. All rights reserved.
 //
 
 import Foundation
 import UIKit
-class TweetPresenter {
+class APITwitterService {
     var token: String?
     
-    weak var twitterViewDeleagte: TwitterDelegate?
+    weak var twitterViewDeleagte: TwitterViewDelegate?
     
-    init(_ twitterViewDeleagte: TwitterDelegate?) {
+    init(_ twitterViewDeleagte: TwitterViewDelegate?) {
         self.twitterViewDeleagte = twitterViewDeleagte
     }
     
-    weak var twitterImage: TwitterImageDelegate?
-    
-    init(twitterImage: TwitterImageDelegate?) {
-        self.twitterImage = twitterImage
-    }
-    
-    func requestToken() {
+    func getToken() {
         guard let key = ProcessInfo.processInfo.environment["CUSTOMER_KEY"] else {return}
         guard let secret = ProcessInfo.processInfo.environment["CUSTOMER_SECRET"] else {return}
         
@@ -35,7 +29,7 @@ class TweetPresenter {
         request.setValue("Basic " + bearer, forHTTPHeaderField: "Authorization")
         request.setValue("application/x-www-form-urlencoded;charset=UTF-8", forHTTPHeaderField: "Content-Type")
         request.httpBody = "grant_type=client_credentials".data(using: String.Encoding.utf8)
-
+        
         let task = URLSession.shared.dataTask(with: request) {
             (data, response, error) in
             if let error = error {
@@ -98,7 +92,6 @@ class TweetPresenter {
                                     if let date = dateFormatter.date(from: date) {
                                         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
                                         tweetArray.append(Tweet(profileImageUrl: profileImageUrl, name: name, text: text, date: dateFormatter.string(from: date)))
-                                        self.downloadData(profileImageUrl)
                                     }
                                     print(tweet)
                                 }
@@ -114,29 +107,5 @@ class TweetPresenter {
             }
             dataTask.resume()
         }
-    }
-    
-    func downloadData(_ profileImageUrl: String?) {
-        guard let profileImageUrl = profileImageUrl else { return }
-        let url = URL(string: profileImageUrl)
-        
-        let dataTask = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            if let error = error {
-                print(error)
-                self.twitterViewDeleagte?.displayError(error: error as NSError)
-            }
-            else if let data = data {
-                do {
-                    DispatchQueue.main.async {
-                        let image = UIImage(data: data)
-                        self.twitterImage?.displayImage(image: image!)
-                    }
-                } catch (let error) {
-                    print(error)
-                    self.twitterViewDeleagte?.displayError(error: error as NSError)
-                }
-            }
-        }
-        dataTask.resume()
     }
 }
