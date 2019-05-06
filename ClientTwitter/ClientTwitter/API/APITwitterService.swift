@@ -13,6 +13,8 @@ class APITwitterService {
     var token: String?
     weak var twitterViewDeleagte: TwitterViewDelegate?
     
+    var searchText: String?
+    
     init(_ twitterViewDeleagte: TwitterViewDelegate?) {
         self.twitterViewDeleagte = twitterViewDeleagte
     }
@@ -41,7 +43,7 @@ class APITwitterService {
                     if let dictionary: NSDictionary = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
                         self.token = dictionary["access_token"] as? String
                         if self.token != nil {
-                            self.getTweets(content: "IOS Developer")
+                            self.getTweets(content: self.searchText ?? "IOS Developer")
                         } else {
                             print("Empty token")
                         }
@@ -103,7 +105,7 @@ class APITwitterService {
                         self.twitterViewDeleagte?.displayError(error: error as NSError)
                     }
                 }
-         }.resume()
+                }.resume()
         }
     }
 }

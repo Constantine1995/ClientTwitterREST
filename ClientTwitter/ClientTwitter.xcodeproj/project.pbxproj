@@ -89,12 +89,12 @@
 				04C306F7227C3FEB0047EA4D /* Protocols */,
 				04C306F2227C3CB40047EA4D /* Models */,
 				04C306EB227C37CD0047EA4D /* Views */,
+				04C42CA822809A3100D620F0 /* Extensions */,
 				04C306D6227C345F0047EA4D /* AppDelegate.swift */,
 				04C306DA227C345F0047EA4D /* Main.storyboard */,
 				04C306DD227C34600047EA4D /* Assets.xcassets */,
 				04C306DF227C34600047EA4D /* LaunchScreen.storyboard */,
 				04C306E2227C34600047EA4D /* Info.plist */,
-				04C42CA822809A3100D620F0 /* Extensions */,
 			);
 			path = ClientTwitter;
 			sourceTree = "<group>";

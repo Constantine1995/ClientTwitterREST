@@ -15,11 +15,25 @@ extension TweetsTableViewController: UISearchBarDelegate {
         }
         return true
     }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar == searchController.searchBar {
+            apiTwitterService?.searchText = searchBar.text
+            setSearchbarPlaceholder(searchBar)
             apiTwitterService?.getTweets(content: searchBar.text)
             searchController.isActive = false
         }
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        setSearchbarPlaceholder(searchBar)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        setSearchbarPlaceholder(searchBar)
+    }
+    
+    private func setSearchbarPlaceholder(_ searchBar: UISearchBar) {
+        searchBar.placeholder = apiTwitterService?.searchText
+    }
 }
