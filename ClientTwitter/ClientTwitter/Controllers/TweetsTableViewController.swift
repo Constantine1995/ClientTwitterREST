@@ -10,9 +10,11 @@ import UIKit
 
 class TweetsTableViewController: UITableViewController, TwitterViewDelegate {
     
-    private var apiTwitterService: APITwitterService?
+    internal var apiTwitterService: APITwitterService?
     private var  token: String?
     private var  tweets: [Tweet] = []
+    
+    var searchController: UISearchController!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -22,15 +24,12 @@ class TweetsTableViewController: UITableViewController, TwitterViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupSearchController()
         apiTwitterService = APITwitterService(self)
         apiTwitterService?.getToken()
     }
     
     func displayTweets(tweets: [Tweet]) {
-        for tweet in tweets {
-            print(tweet)
-        }
         self.tweets = tweets
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -39,6 +38,16 @@ class TweetsTableViewController: UITableViewController, TwitterViewDelegate {
     
     func displayError(error: NSError) {
         print("Error: ", error)
+    }
+    
+    func setupSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.placeholder = "Search Twitter"
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = true
+        searchController.searchBar.delegate = self
+        navigationItem.titleView = searchController.searchBar
+        definesPresentationContext = true
     }
     
     // MARK: - Table view data source
@@ -57,5 +66,6 @@ class TweetsTableViewController: UITableViewController, TwitterViewDelegate {
         cell.avatarImageView.downloaded(from: urlProfileImage!)
         return cell
     }
-    
 }
+
+

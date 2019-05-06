@@ -11,7 +11,6 @@ import UIKit
 class APITwitterService {
     
     var token: String?
-    
     weak var twitterViewDeleagte: TwitterViewDelegate?
     
     init(_ twitterViewDeleagte: TwitterViewDelegate?) {
@@ -42,7 +41,7 @@ class APITwitterService {
                     if let dictionary: NSDictionary = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
                         self.token = dictionary["access_token"] as? String
                         if self.token != nil {
-                            self.downloadJSON(content: "design")
+                            self.getTweets(content: "IOS Developer")
                         } else {
                             print("Empty token")
                         }
@@ -55,7 +54,7 @@ class APITwitterService {
             }.resume()
     }
     
-    func downloadJSON(content: String?) {
+    func getTweets(content: String?) {
         guard token != nil else {return}
         
         var tweetArray: [Tweet] = []
@@ -104,7 +103,7 @@ class APITwitterService {
                         self.twitterViewDeleagte?.displayError(error: error as NSError)
                     }
                 }
-                }.resume()
+         }.resume()
         }
     }
 }
