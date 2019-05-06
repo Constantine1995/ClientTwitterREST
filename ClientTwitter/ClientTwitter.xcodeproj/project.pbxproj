@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0477DD9B2280398500921F4E /* APITwitterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0477DD9A2280398500921F4E /* APITwitterService.swift */; };
 		0477DD9D22804ECD00921F4E /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0477DD9C22804ECD00921F4E /* Extension+UIImageView.swift */; };
+		0477DD9F22806B1900921F4E /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0477DD9E22806B1900921F4E /* Extension+UIView.swift */; };
 		04C306D7227C345F0047EA4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C306D6227C345F0047EA4D /* AppDelegate.swift */; };
 		04C306DC227C345F0047EA4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C306DA227C345F0047EA4D /* Main.storyboard */; };
 		04C306DE227C34600047EA4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C306DD227C34600047EA4D /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		0477DD9A2280398500921F4E /* APITwitterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITwitterService.swift; sourceTree = "<group>"; };
 		0477DD9C22804ECD00921F4E /* Extension+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = SOURCE_ROOT; };
+		0477DD9E22806B1900921F4E /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		04C306D3227C345F0047EA4D /* ClientTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClientTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C306D6227C345F0047EA4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04C306DB227C345F0047EA4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				04C306DF227C34600047EA4D /* LaunchScreen.storyboard */,
 				04C306E2227C34600047EA4D /* Info.plist */,
 				0477DD9C22804ECD00921F4E /* Extension+UIImageView.swift */,
+				0477DD9E22806B1900921F4E /* Extension+UIView.swift */,
 			);
 			path = ClientTwitter;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			files = (
 				0477DD9B2280398500921F4E /* APITwitterService.swift in Sources */,
 				04C306ED227C37EC0047EA4D /* TweetsTableViewController.swift in Sources */,
+				0477DD9F22806B1900921F4E /* Extension+UIView.swift in Sources */,
 				04C306F9227C3FFF0047EA4D /* TwitterViewDelegate.swift in Sources */,
 				0477DD9D22804ECD00921F4E /* Extension+UIImageView.swift in Sources */,
 				04C306D7227C345F0047EA4D /* AppDelegate.swift in Sources */,

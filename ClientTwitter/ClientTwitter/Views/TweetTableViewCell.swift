@@ -12,15 +12,17 @@ class TweetTableViewCell: UITableViewCell {
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var fullNameLabel: UILabel!
-    @IBOutlet weak var referenceCreated: UILabel!
+    @IBOutlet weak var screenName: UILabel!
     @IBOutlet weak var contentTextLabel: UILabel!
-    @IBOutlet weak var tweetImageView: UIImageView!
     @IBOutlet weak var dataLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupView()
     }
-    
+    func setupView() {
+        avatarImageView.roundedCorners()
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

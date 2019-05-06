@@ -14,13 +14,16 @@ class TweetsTableViewController: UITableViewController, TwitterViewDelegate {
     private var  token: String?
     private var  tweets: [Tweet] = []
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableView.automaticDimension
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.estimatedRowHeight = 300
-        tableView.rowHeight = 300 //UITableView.automaticDimension
         apiTwitterService = APITwitterService(self)
-        
         apiTwitterService?.getToken()
     }
     
@@ -48,9 +51,11 @@ class TweetsTableViewController: UITableViewController, TwitterViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetTableViewCell
         let urlProfileImage = tweets[indexPath.row].profileImageUrl
         cell.fullNameLabel.text = tweets[indexPath.row].name
+        cell.screenName.text = tweets[indexPath.row].screenName
         cell.dataLabel.text = tweets[indexPath.row].date
         cell.contentTextLabel.text = tweets[indexPath.row].text
         cell.avatarImageView.downloaded(from: urlProfileImage!)
         return cell
     }
+    
 }

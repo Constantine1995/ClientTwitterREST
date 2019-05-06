@@ -10,6 +10,7 @@ import Foundation
 public struct Tweet {
     public let profileImageUrl: String?
     public let name: String
-    public let text: String
-    public let date: String
+    public let screenName: String!
+    public let text: String!
+    public let date: String!
 }

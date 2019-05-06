@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 class APITwitterService {
+    
     var token: String?
     
     weak var twitterViewDeleagte: TwitterViewDelegate?
@@ -30,7 +31,7 @@ class APITwitterService {
         request.setValue("application/x-www-form-urlencoded;charset=UTF-8", forHTTPHeaderField: "Content-Type")
         request.httpBody = "grant_type=client_credentials".data(using: String.Encoding.utf8)
         
-        let task = URLSession.shared.dataTask(with: request) {
+        URLSession.shared.dataTask(with: request) {
             (data, response, error) in
             if let error = error {
                 print(error)
@@ -41,7 +42,7 @@ class APITwitterService {
                     if let dictionary: NSDictionary = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
                         self.token = dictionary["access_token"] as? String
                         if self.token != nil {
-                            self.downloadJSON(content: "Marvel")
+                            self.downloadJSON(content: "design")
                         } else {
                             print("Empty token")
                         }
@@ -51,8 +52,7 @@ class APITwitterService {
                     self.twitterViewDeleagte?.displayError(error: error as NSError)
                 }
             }
-        }
-        task.resume()
+            }.resume()
     }
     
     func downloadJSON(content: String?) {
@@ -69,7 +69,7 @@ class APITwitterService {
             request.httpMethod = "GET"
             request.setValue("Bearer \(token!)", forHTTPHeaderField: "Authorization")
             
-            let dataTask = URLSession.shared.dataTask(with: request) {
+            URLSession.shared.dataTask(with: request) {
                 (data, response, error) in
                 if let error = error {
                     print(error)
@@ -85,15 +85,15 @@ class APITwitterService {
                                     guard let text = tweet["text"] as? String else { return }
                                     guard let date = tweet["created_at"] as? String else { return }
                                     guard let profileImageUrl = user["profile_image_url_https"] as? String else { return }
-                                    print("profileImageUrl ", profileImageUrl)
+                                    guard let screenName = user["screen_name"] as? String else { return }
                                     
                                     let dateFormatter = DateFormatter()
+                                    
                                     dateFormatter.dateFormat = "E MMM dd HH:mm:ss Z yyyy"
                                     if let date = dateFormatter.date(from: date) {
-                                        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-                                        tweetArray.append(Tweet(profileImageUrl: profileImageUrl, name: name, text: text, date: dateFormatter.string(from: date)))
+                                        dateFormatter.dateFormat = "dd/MM/yy HH:mm"
+                                        tweetArray.append(Tweet(profileImageUrl: profileImageUrl, name: name, screenName: "@" + screenName, text: text, date: dateFormatter.string(from: date)))
                                     }
-                                    print(tweet)
                                 }
                             }
                         }
@@ -104,8 +104,7 @@ class APITwitterService {
                         self.twitterViewDeleagte?.displayError(error: error as NSError)
                     }
                 }
-            }
-            dataTask.resume()
+                }.resume()
         }
     }
 }

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 extension UIImageView {
+    
     func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         contentMode = mode
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -23,6 +24,7 @@ extension UIImageView {
             }
             }.resume()
     }
+    
     func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         guard let url = URL(string: link) else { return }
         downloaded(from: url, contentMode: mode)
