@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0475934C2281D18B006BDB5E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475934B2281D18B006BDB5E /* Constant.swift */; };
 		0477DD9B2280398500921F4E /* APITwitterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0477DD9A2280398500921F4E /* APITwitterService.swift */; };
 		0477DD9D22804ECD00921F4E /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0477DD9C22804ECD00921F4E /* Extension+UIImageView.swift */; };
 		0477DD9F22806B1900921F4E /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0477DD9E22806B1900921F4E /* Extension+UIView.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0475934B2281D18B006BDB5E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		0477DD9A2280398500921F4E /* APITwitterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITwitterService.swift; sourceTree = "<group>"; };
 		0477DD9C22804ECD00921F4E /* Extension+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Extension+UIImageView.swift"; path = "ClientTwitter/Extensions/Extension+UIImageView.swift"; sourceTree = SOURCE_ROOT; };
 		0477DD9E22806B1900921F4E /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
@@ -49,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0475934D2281D18E006BDB5E /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0475934B2281D18B006BDB5E /* Constant.swift */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
 		0477DD982280394C00921F4E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +100,7 @@
 				04C306F2227C3CB40047EA4D /* Models */,
 				04C306EB227C37CD0047EA4D /* Views */,
 				0477DD982280394C00921F4E /* Controllers */,
+				0475934D2281D18E006BDB5E /* Support Files */,
 				04C306D6227C345F0047EA4D /* AppDelegate.swift */,
 				04C306DA227C345F0047EA4D /* Main.storyboard */,
 				04C306DD227C34600047EA4D /* Assets.xcassets */,
@@ -211,6 +222,7 @@
 				0477DD9D22804ECD00921F4E /* Extension+UIImageView.swift in Sources */,
 				0477DDA122808D5D00921F4E /* Extension+TweetsTableViewController.swift in Sources */,
 				04C306D7227C345F0047EA4D /* AppDelegate.swift in Sources */,
+				0475934C2281D18B006BDB5E /* Constant.swift in Sources */,
 				04C306F6227C3EF70047EA4D /* Tweet.swift in Sources */,
 				04C306EF227C38110047EA4D /* TweetTableViewCell.swift in Sources */,
 			);

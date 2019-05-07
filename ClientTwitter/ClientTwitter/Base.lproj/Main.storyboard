@@ -86,6 +86,7 @@
                                         <constraint firstItem="5Sy-Ii-FID" firstAttribute="top" secondItem="kuL-b0-ehv" secondAttribute="top" constant="8" id="xKI-Sp-zsM"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="avatarImageView" destination="5Sy-Ii-FID" id="Hjw-h4-KFd"/>
                                     <outlet property="contentTextLabel" destination="YCe-V8-zYz" id="uYf-RF-cwx"/>

@@ -18,17 +18,14 @@ class TweetsTableViewController: UITableViewController, TwitterViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupSearchController()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableView.automaticDimension
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupSearchController()
+        
         apiTwitterService = APITwitterService(self)
         apiTwitterService?.getToken()
     }
-    
+
     func displayTweets(tweets: [Tweet]) {
         self.tweets = tweets
         DispatchQueue.main.async {
@@ -42,7 +39,7 @@ class TweetsTableViewController: UITableViewController, TwitterViewDelegate {
     
     func setupSearchController() {
         searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.placeholder = "Search Twitter"
+        searchController.searchBar.placeholder = Constant.searchPlaceholder
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = true
         searchController.searchBar.delegate = self

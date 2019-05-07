@@ -11,7 +11,7 @@ import UIKit
 extension TweetsTableViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         if searchBar == searchController.searchBar {
-            searchBar.placeholder = "Search Twitter"
+            searchBar.placeholder = Constant.searchPlaceholder
         }
         return true
     }
