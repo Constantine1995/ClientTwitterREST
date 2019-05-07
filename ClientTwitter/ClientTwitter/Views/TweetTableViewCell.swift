@@ -16,6 +16,22 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var contentTextLabel: UILabel!
     @IBOutlet weak var dataLabel: UILabel!
     
+    var tweet: Tweet? {
+        didSet {
+            guard let avatarImageView = tweet?.profileImageUrl else { return }
+            guard let fullNameLabel = tweet?.name else { return }
+            guard let screenName = tweet?.screenName else { return }
+            guard let contentTextLabel = tweet?.text else { return }
+            guard let dataLabel = tweet?.date else { return }
+ 
+            self.avatarImageView.downloaded(from: avatarImageView)
+            self.fullNameLabel.text = fullNameLabel
+            self.screenName.text = screenName
+            self.contentTextLabel.text = contentTextLabel
+            self.dataLabel.text = dataLabel
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()

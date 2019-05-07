@@ -10,11 +10,9 @@ import UIKit
 
 class TweetsTableViewController: UITableViewController, TwitterViewDelegate {
     
-    internal var apiTwitterService: APITwitterService?
-    private var  token: String?
-    private var  tweets: [Tweet] = []
-    
+    var apiTwitterService: APITwitterService?
     var searchController: UISearchController!
+    private var  tweets: [Tweet] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -25,16 +23,23 @@ class TweetsTableViewController: UITableViewController, TwitterViewDelegate {
         apiTwitterService = APITwitterService(self)
         apiTwitterService?.getToken()
     }
-
+    
     func displayTweets(tweets: [Tweet]) {
-        self.tweets = tweets
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        if tweets.count != 0 {
+            self.tweets = tweets
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        } else {
+            
+            self.showAlertWithAction(title: "Twitter!", message: "Tweets not found! :(") {
+                self.searchBarClear(self.searchController.searchBar)
+            }
         }
     }
     
     func displayError(error: NSError) {
-        print("Error: ", error)
+        self.showAlert(title: "Error!", message: error.localizedDescription)
     }
     
     func setupSearchController() {
@@ -55,14 +60,7 @@ class TweetsTableViewController: UITableViewController, TwitterViewDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetTableViewCell
-        let urlProfileImage = tweets[indexPath.row].profileImageUrl
-        cell.fullNameLabel.text = tweets[indexPath.row].name
-        cell.screenName.text = tweets[indexPath.row].screenName
-        cell.dataLabel.text = tweets[indexPath.row].date
-        cell.contentTextLabel.text = tweets[indexPath.row].text
-        cell.avatarImageView.downloaded(from: urlProfileImage!)
+        cell.tweet = tweets[indexPath.row]
         return cell
     }
 }
-
-

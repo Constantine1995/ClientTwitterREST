@@ -10,10 +10,9 @@ import Foundation
 import UIKit
 class APITwitterService {
     
-    var token: String?
-    weak var twitterViewDeleagte: TwitterViewDelegate?
-    
+    private var token: String?
     var searchText: String?
+    weak var twitterViewDeleagte: TwitterViewDelegate?
     
     init(_ twitterViewDeleagte: TwitterViewDelegate?) {
         self.twitterViewDeleagte = twitterViewDeleagte
@@ -43,7 +42,7 @@ class APITwitterService {
                     if let dictionary: NSDictionary = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
                         self.token = dictionary[TweetAPIResponse.token] as? String
                         if self.token != nil {
-                            self.getTweets(content: self.searchText ?? "IOS Developer")
+                            self.getTweets(content: self.searchText ?? Constant.defaultSearchText)
                         } else {
                             print("Empty token")
                         }
@@ -89,7 +88,6 @@ class APITwitterService {
                                     guard let screenName = user[TweetAPIResponse.screenName] as? String else { return }
                                     
                                     let dateFormatter = DateFormatter()
-                                    
                                     dateFormatter.dateFormat = Constant.dateFormatDefault
                                     if let date = dateFormatter.date(from: date) {
                                         dateFormatter.dateFormat = Constant.dateFormatForTweet
@@ -97,6 +95,7 @@ class APITwitterService {
                                     }
                                 }
                             }
+                            
                         }
                         self.twitterViewDeleagte?.displayTweets(tweets: tweetArray)
                     }

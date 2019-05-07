@@ -14,7 +14,7 @@ public struct Constant {
     static let dateFormatForTweet = "dd/MM/yy HH:mm"
     static let httpGetMethod = "GET"
     static let httpPostMethod  = "POST"
-    
+    static let defaultSearchText = "IOS Developer"
     static func getValidURL(by url: String, amountTweets: Int) -> String {
         return "https://api.twitter.com/1.1/search/tweets.json?q=\(url)&result_type=recent&count=\(amountTweets)"
     }
